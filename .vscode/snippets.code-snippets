@@ -1,0 +1,48 @@
+{
+  "request func": {
+    "scope": "javascript,typescript",
+    "prefix": "req",
+    "body": [
+      "import _request from \"../_request\";",
+      "",
+      "export type ${TM_FILENAME/(.*)\\..+$/${1:/capitalize}/}ReqData = {",
+      "  ",
+      "};",
+      "",
+      "/**",
+      " * DESCRIPTION",
+      " * @returns",
+      " */",
+      "export async function ${TM_FILENAME/(.*)\\..+$/$1/}Req(data: ${TM_FILENAME/(.*)\\..+$/${1:/capitalize}/}ReqData) {",
+      "  const res = await _request({",
+      "    url: \"/TODO\",",
+      "    method: \"$1\",",
+      "    data,",
+      "  });",
+      "",
+      "  return;",
+      "}",
+    ],
+    "description": "网络请求函数的模板"
+  },
+  "use history": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "uhh",
+    "body": [
+      "const history = useHistory$0();",
+    ],
+    "description": "use history"
+  },
+  "hook": {
+    "scope": "javascript,typescript",
+    "prefix": "hook",
+    "body": [
+      "import { useState } from \"react\";",
+      "",
+      "export function ${TM_FILENAME/(.*)\\..+$/$1/}() {",
+      "  $1",
+      "}",
+    ],
+    "description": "hooks函数的模板"
+  }
+}

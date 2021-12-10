@@ -1,0 +1,67 @@
+a {
+  color: var(--primary);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) #fff;
+  color: var(--on-bg);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 999px;
+  -webkit-border-radius: 6px;
+
+  &:hover {
+    background-color: var(--primary-l);
+  }
+
+  &:active {
+    background-color: var(--primary-d);
+  }
+}
+
+.MuiInputBase-root {
+  background-color: var(--bg-l);
+  input {
+    background-color: var(--bg-l);
+  }
+}
+.MuiInput-root.MuiInput-underline,
+.MuiTextField-root {
+  input,
+  textarea {
+    color: var(--on-bg);
+  }
+  background-color: transparent;
+}
+
+.MuiTextField-root {
+  color: var(--on-bg);
+
+  label {
+    color: currentColor;
+  }
+}

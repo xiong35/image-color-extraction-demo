@@ -1,0 +1,52 @@
+$primary: #0f4c3a;
+$primary-d: darken($primary, 15%);
+$primary-l: lighten($primary, 15%);
+$primary-a: rgba($primary, 0.1);
+
+// $secondary: #66bab7;
+$secondary: #ebb471;
+$secondary-d: darken($secondary, 15%);
+$secondary-l: lighten($secondary, 15%);
+
+$on-bg: hsl(220, 13%, 9%);
+$on-bg-d: darken($on-bg, 5%);
+$on-bg-l: lighten($on-bg, 10%);
+
+$bg: #f6f7fb;
+$bg-d: darken($bg, 8%);
+$bg-l: lighten($bg, 100%);
+$on-primary: $bg;
+
+body {
+  --primary: #{$primary};
+  --primary-d: #{$primary-d};
+  --primary-l: #{$primary-l};
+  --primary-a: #{$primary-a};
+
+  --secondary: #{$secondary};
+  --secondary-d: #{$secondary-d};
+  --secondary-l: #{$secondary-l};
+
+  --on-bg: #{$on-bg};
+  --on-bg-d: #{$on-bg-d};
+  --on-bg-l: #{$on-bg-l};
+
+  --bg: #{$bg};
+  --bg-d: #{$bg-d};
+  --bg-l: #{$bg-l};
+  --on-primary: #{$on-primary};
+}
+
+.dark {
+  --primary-d: #{$primary-l};
+  --primary-l: #{$primary-d};
+
+  --secondary-d: #{$secondary-l};
+  --secondary-l: #{$secondary-d};
+
+  --on-bg-d: #{$on-bg-l};
+  --on-bg-l: #{$on-bg-d};
+
+  --bg-d: #{$bg-l};
+  --bg-l: #{$bg-d};
+}

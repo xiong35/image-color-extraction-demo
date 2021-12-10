@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "mike-co.import-sorter",
+    "burkeholland.simple-react-snippets",
+    "knisterpeter.vscode-commitizen",
+    "dbaeumer.vscode-eslint"
+  ]
+}

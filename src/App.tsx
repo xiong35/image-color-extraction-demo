@@ -15,17 +15,21 @@ type ColorInfo = {
   count: number;
 };
 
+let curNum = 3;
+
 const extractor = new ColorExtractor();
 
 export default function App() {
   const { imageRef } = useImage();
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState("http://blog.xiong35.cn/color-extract/3.jpg");
   const [config, setConfig] = useState<Config>({
     compresionRate: 0.4,
     topColorCount: 6,
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [colors, setColors] = useState<ColorInfo[]>([]);
+
+  const [textColor, setTextColor] = useState(["#fff", "#000"]);
 
   useEffect(() => {
     extractor.setConfig(config);
@@ -39,6 +43,7 @@ export default function App() {
       .then(() => {
         console.log(extractor.colors);
         setColors(extractor.colors || []);
+        setTextColor(extractor.chooseReadableColor());
       })
       .then(() => setIsProcessing(false));
   }, [config, url]);
@@ -54,6 +59,16 @@ export default function App() {
             const url = await file2DataUrl(e.target.files[0]);
             setUrl(url.toString());
           }
+        }}
+      />
+
+      <input
+        type="button"
+        value="switch"
+        onClick={() => {
+          setUrl(
+            `http://blog.xiong35.cn/color-extract/${(++curNum % 4) + 1}.jpg`
+          );
         }}
       />
 
@@ -79,7 +94,11 @@ export default function App() {
             type="number"
             value={config.topColorCount}
             onChange={(e) =>
-              setConfig({ ...config, topColorCount: Number(e.target.value) })
+              setConfig({
+                ...config,
+                topColorCount:
+                  Number(e.target.value) >= 2 ? Number(e.target.value) : 2,
+              })
             }
           />
         </div>
@@ -92,10 +111,27 @@ export default function App() {
             onChange={(e) =>
               setConfig({
                 ...config,
-                compresionRate: Number(e.target.value) / 100,
+                compresionRate:
+                  Number(e.target.value) / 100 < 0.02
+                    ? 0.02
+                    : Number(e.target.value) / 100,
               })
             }
           />
+        </div>
+      </div>
+
+      <div
+        className="demo"
+        style={{ background: textColor[0], color: textColor[1] }}
+      >
+        <img src={url} className="demo-image" alt="" />
+        <div className="demo-text">
+          <div className="demo-title">Lorem ipsum dolor</div>
+          <div className="demo-content">
+            sit amet consectetur adipisicing elit. Omnis labore perferendis
+            aliquid modi qui beatae enim
+          </div>
         </div>
       </div>
     </div>
